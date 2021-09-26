@@ -6,6 +6,7 @@ module.exports = {
     diode: require('./diode'),
     jstph: require('./jstph'),
     jumper: require('./jumper'),
+    nice_nano: require('./nice_nano'),
     mx: require('./mx'),
     oled: require('./oled'),
     omron: require('./omron'),

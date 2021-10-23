@@ -30,6 +30,7 @@ module.exports = {
     P011: 'P011',
     P104: 'P104', P101: 'P101', P102: 'P102', P107: 'P107',
     P106: 'P106',
+    DATA: 'DATA',
   },
   params: {
     class: 'MCU',
@@ -78,6 +79,14 @@ module.exports = {
         (pad 22 thru_hole circle (at 8.89 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P011.str})
         (pad 23 thru_hole circle (at 11.43 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P104.str})
         (pad 24 thru_hole circle (at 13.97 ${def_neg}7.62 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P106.str})
+
+
+        (pad 27 thru_hole circle (at 8.89 ${def_neg}5.08 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P101.str})
+        (pad 27 thru_hole circle (at 8.89 ${def_neg}2.54 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P102.str})
+
+        (pad 27 thru_hole circle (at 13.97 ${def_neg}5.08 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P101.str})
+        (pad 27 thru_hole circle (at 13.97 ${def_neg}2.54 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.P102.str})
+        (pad 27 thru_hole circle (at 13.97 ${def_neg}0.00 0) (size 1.7526 1.7526) (drill 1.0922) (layers *.Cu *.SilkS *.Mask) ${p.net.DATA.str})
       `
     }
     if(p.param.orientation == 'down') {

@@ -20,4 +20,5 @@ module.exports = {
     trrs: require('./trrs'),
     via: require('./via'),
     silk: require('./silk'),
+    reset: require('./reset'),
 }

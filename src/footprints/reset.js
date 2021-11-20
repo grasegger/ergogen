@@ -10,7 +10,7 @@ module.exports = {
             ${p.at /* parametric position */}
         (descr "Ultra-small-sized Tactile Switch with High Contact Reliability, Top-actuated Model, without Ground Terminal, without Boss")
         (attr smd)
-        (fp_text reference RSW2 (at 0 2.55) (layer F.SilkS) hide
+        (fp_text reference ${p.ref} (at 0 2.55) (layer F.SilkS) hide
           (effects (font (size 1 1) (thickness 0.15)))
         )
 
@@ -43,14 +43,7 @@ module.exports = {
         (pad 1 smd rect (at -1.7 0 ${p.rot}) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask) ${p.net.from.str})
         (pad 2 smd rect (at 1.7 0 ${p.rot}) (size 0.9 1.7) (layers F.Cu F.Paste F.Mask) ${p.net.to.str})
 
-        (fp_line (start -1.5 -1.25) (end 1.5 -1.25) (layer B.Fab) (width 0.1))
-        (fp_line (start 1.5 -1.25) (end 1.5 1.25) (layer B.Fab) (width 0.1))
-        (fp_line (start 1.5 1.25) (end -1.5 1.25) (layer B.Fab) (width 0.1))
-        (fp_line (start -1.5 1.25) (end -1.5 -1.25) (layer B.Fab) (width 0.1))
-        (fp_circle (center 0 0) (end 0.75 0) (layer B.Fab) (width 0.1))
-        (pad 1 smd rect (at -1.7 0 ${p.rot}) (size 0.9 1.7) (layers B.Cu B.Paste B.Mask) ${p.net.from.str})
-        (pad 2 smd rect (at 1.7 0 ${p.rot}) (size 0.9 1.7) (layers B.Cu B.Paste B.Mask) ${p.net.to.str})
-      )
+     )
         
         `
     }

@@ -197,9 +197,17 @@ const footprint = exports._footprint = (config, name, points, point, net_indexer
     parsed_params.net = {}
     for (const [net_name, net_value] of Object.entries(prep.extend(fp.nets || {}, nets))) {
         let net = a.sane(net_value, `${name}.nets.${net_name}`, 'string')()
+        
+        if (point && type === 'mx' && point.meta.mirrored && !net.startsWith('=') ) {
+            net = `MIRROR_${net}`
+        }
+
         if (net.startsWith('=') && point) {
             const indirect = net.substring(1)
             net = point.meta[indirect]
+            if (point && type === 'mx' && point.meta.mirrored) {
+                net = `MIRROR_${net}`
+            }
             net = a.sane(net, `${name}.nets.${net_name} --> ${point.meta.name}.${indirect}`, 'string')()
         }
         const index = net_indexer(net)

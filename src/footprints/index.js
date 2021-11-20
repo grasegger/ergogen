@@ -21,4 +21,6 @@ module.exports = {
     via: require('./via'),
     silk: require('./silk'),
     reset: require('./reset'),
+    lp502030: require('./lp502030'),
+    pimoroni477: require('./pimoroni447'),
 }

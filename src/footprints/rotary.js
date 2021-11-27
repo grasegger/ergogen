@@ -16,9 +16,25 @@ module.exports = {
         C: undefined
     },
     params: {
-        class: 'ROT'
+        class: 'ROT',
+        side: 'F'
     },
-    body: p => `
+    body: p => {
+        let pins = p.param.side === "F" ? 
+        `
+        (pad A thru_hole rect (at -7.62 -2.54) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.A.str})
+        (pad C thru_hole circle (at -7.62 -0.04) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.C.str})
+        (pad B thru_hole circle (at -7.62 2.46) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.B.str})
+        (pad 1 thru_hole circle (at 6.88 -2.54) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.from.str})
+        (pad 2 thru_hole circle (at 6.88 2.46) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.to.str})
+        `: `
+        (pad A thru_hole circle (at -7.62 -2.54) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.B.str})
+        (pad C thru_hole circle (at -7.62 -0.04) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.C.str})
+        (pad B thru_hole rect (at -7.62 2.46) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.A.str})
+        (pad 1 thru_hole circle (at 6.88 -2.54) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.to.str})
+        (pad 2 thru_hole circle (at 6.88 2.46) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.from.str})
+        `
+        let out = `
         (module rotary_encoder (layer F.Cu) (tedit 603326DE)
 
             ${p.at /* parametric position */}
@@ -56,17 +72,16 @@ module.exports = {
             (fp_line (start 7.88 6.81) (end -8.87 6.81) (layer F.CrtYd) (width 0.05))
             (fp_circle (center -0.12 -0.04) (end 2.88 -0.04) (layer F.SilkS) (width 0.12))
             (fp_circle (center -0.12 -0.04) (end 2.88 -0.04) (layer F.Fab) (width 0.12))
+            (fp_circle (center -0.12 -0.04) (end 9.525 -0.04) (layer F.Fab) (width 0.12))
 
             ${''/* pin names */}
-            (pad A thru_hole rect (at -7.62 -2.54) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.A.str})
-            (pad C thru_hole circle (at -7.62 -0.04) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.C.str})
-            (pad B thru_hole circle (at -7.62 2.46) (size 2 2) (drill 1) (layers *.Cu *.Mask) ${p.net.B.str})
-            (pad 1 thru_hole circle (at 6.88 -2.54) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.from.str})
-            (pad 2 thru_hole circle (at 6.88 2.46) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.net.to.str})
+            ${pins}
 
             ${''/* Legs */}
             (pad "" thru_hole rect (at -0.12 -5.64) (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask))
             (pad "" thru_hole rect (at -0.12 5.56) (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask))
         )
     `
+    return out
+    }
 }

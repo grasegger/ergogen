@@ -1,12 +1,30 @@
 module.exports = {
     params: {
-        side: 'F'
+        side: 'F',
+        mirror: false,
     },
     nets: {
       GND: undefined,
       VCC: undefined,
+      SCA: "P17",
+      SCL: "P20",
+      INT: undefined
   },
     body: p =>  {
+      let pins = p.param.mirror ? 
+      `
+      (pad "" thru_hole oval (at -9.5 -5) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.GND.str} )
+      (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.INT.str} )
+      (pad "" thru_hole oval (at -9.5 0.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCL.str})
+      (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCA.str})
+      (pad "" thru_hole rect (at -9.5 5.16) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)  ${p.net.VCC.str}  ) 
+      ` : `
+      (pad "" thru_hole rect (at -9.5 -5) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.VCC.str} )
+      (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCA.str} )
+      (pad "" thru_hole oval (at -9.5 0.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCL.str})
+      (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.INT.str})
+      (pad "" thru_hole oval (at -9.5 5.16) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)  ${p.net.GND.str}  ) 
+      `
       let out =
     `
       (module pimoroni_trackball (layer F.Cu) (tedit 5D20B36F)
@@ -23,11 +41,7 @@ module.exports = {
         (fp_line (start -11 -7.5) (end -11 7.5) (layer "F.SilkS") (width 0.12) )
         (fp_line (start -11 -7.5) (end -5 -7.5) (layer "F.SilkS") (width 0.12) )
         (fp_line (start 11 12.5) (end 11 -12.5) (layer "F.SilkS") (width 0.12) )
-        (pad "" thru_hole rect (at -9.5 -5) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.VCC.str} )
-        (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.A.str} )
-        (pad "" thru_hole oval (at -9.5 0.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.B.str})
-        (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.C.str})
-        (pad "" thru_hole oval (at -9.5 5.16) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)  ${p.net.GND.str}  ) 
+        ${pins}
       )
     `
     return out

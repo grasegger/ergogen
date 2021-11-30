@@ -6,7 +6,7 @@ module.exports = {
     nets: {
       GND: undefined,
       VCC: undefined,
-      SCA: "P17",
+      SDA: "P17",
       SCL: "P20",
       INT: undefined
   },
@@ -16,11 +16,11 @@ module.exports = {
       (pad "" thru_hole oval (at -9.5 -5) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.GND.str} )
       (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.INT.str} )
       (pad "" thru_hole oval (at -9.5 0.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCL.str})
-      (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCA.str})
+      (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SDA.str})
       (pad "" thru_hole rect (at -9.5 5.16) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)  ${p.net.VCC.str}  ) 
       ` : `
       (pad "" thru_hole rect (at -9.5 -5) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.VCC.str} )
-      (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCA.str} )
+      (pad "" thru_hole oval (at -9.5 -2.46) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SDA.str} )
       (pad "" thru_hole oval (at -9.5 0.08) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.SCL.str})
       (pad "" thru_hole oval (at -9.5 2.62) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask) ${p.net.INT.str})
       (pad "" thru_hole oval (at -9.5 5.16) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)  ${p.net.GND.str}  ) 

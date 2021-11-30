@@ -6,8 +6,8 @@ module.exports = {
     nets: {
       GND: undefined,
       VCC: undefined,
-      SDA: "P17",
-      SCL: "P20",
+      SDA: "P2",
+      SCL: "P3",
       INT: undefined
   },
     body: p =>  {
